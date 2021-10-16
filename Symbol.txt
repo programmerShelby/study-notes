@@ -1,0 +1,21 @@
+Symbol：
+    -JS第七种数据类型，表示独一无二的值
+    -特点：
+        -Symbol  的值是唯一的，用来解决命名冲突的问题
+        -Symbol  值不能与其他数据进行运算
+        -Symbol  定义的对象属性不能使用 for...in  循环遍历，但是可以使用Reflect.ownKeys 来获取对象的所有键名
+    -内置属性：
+        1.Symbol.hasInstance ：当其他对象使用 instanceof  运算符，判断是否为该对象的实例时，会调用此方法
+            -class Person2{
+                static [Symbol.hasInstance](){
+                    console.log('check me alredy');
+                }
+            }
+            let o = {};
+            console.log(o instanceof Person2);//check me already (false)
+        2.Symbol.isCancatSpreadable ：其值为布尔值，表示该对象用于 concat 方法时，是否可以展开
+            -const arr1 = [1,2,3];
+            const arr2 = [4,5,6];
+            arr2[Symbol.isConcatSpreadable] = false;
+            console.log(arr1.concat(arr2));//[1,2,3,Array(3)]
+        3.未完成...

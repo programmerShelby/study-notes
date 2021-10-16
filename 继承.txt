@@ -1,0 +1,21 @@
+call():
+    -调用这个函数，并且修改函数运行时的this指向
+    -语法: fun.call(thisArg,arg1,arg2,...)
+        -参数：
+            -thisArg:当前调用函数this 的指向对象
+            -arg1,arg2:传递的其他参数
+
+借用构造函数继承父类型属性：
+    -核心原理：通过call()把父类型的this 指向子类型的this,这样就可以实现子类型继承父类型的属性
+    -栗子：子类通过call()来改变父类this指向
+        -function Father(uname,age){
+            this.uname = uname;
+            this.age = age;
+        }
+
+        function Son(uname,age) {
+            //this指向子构造函数的对象实例
+            Father.call(this,uname,age);
+        }
+        var son = new Son('刘德华',18);
+        console.log(son);//Son {uname: '刘德华', age: 18}
