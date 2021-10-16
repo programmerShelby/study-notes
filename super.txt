@@ -1,0 +1,19 @@
+super:
+    -super 关键字用于访问和调用对象父类上的函数
+        -可以调用父类的构造函数，也可以调用父类的普通函数
+    -super 调用父类的普通函数
+        -class Father{
+            say(){
+                return '我是你爹';
+            }
+        }
+        class Son extends Father{
+            say(){
+                console.log(super.say() + '的儿子');
+            }
+        }
+
+        var son = new Son();
+        son.say();//我是你爹的儿子
+    -注意：
+        1.super  必须在子类this 之前调用
