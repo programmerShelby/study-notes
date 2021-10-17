@@ -1,0 +1,64 @@
+数组方法：
+    -迭代（遍历）方法：for-each()
+        -语法：array.forEach(function(currentValue,index,arr))
+            -currentValue:数组当前项的值
+            -index:数组当前项的索引
+            -arr:数组对象本身
+        -栗子：遍历arr
+            -var arr = [1,2,3];
+            arr.forEach(function(value,index,array){
+            //获得数组元素
+            console.log(value);
+            //获得每个数组的索引号
+            console.log(index);
+            //获得数组本身
+            console.log(array);
+            })
+    -迭代（遍历）方法：filter()
+        -创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素，主要用于筛选
+        -直接返回一个新数组
+        -语法：array.filter(function(currentValue,index,arr))
+            -currentValue:数组当前项的值
+            -index:数组当前项的索引
+            -arr:数组对象本身
+        -栗子：筛选出数组中大于20的数
+            -var arr = [10,26,39,8];
+            //新建数组用于接收返回值
+            var newArr = arr.filter(function(value,index){
+                return value >= 20;
+            })
+            console.log(newArr);//[26,39]
+    -迭代（遍历）方法：some()
+        -用于检查数组中的元素是否满足指定条件，通俗点 查找数组中是否含有满足条件的元素
+        -返回值为布尔值，找到返回true，没找到false
+        -如果找到第一个满足条件的元素，则终止循环，不在继续查找
+        -语法：array.some(function(currentValue,index,arr))
+            -currentValue:数组当前项的值
+            -index:数组当前项的索引
+            -arr:数组对象本身
+        -栗子：找出数组中是否有大于20的数
+            -var arr = [10,26,39,8];
+            var result = arr.some(function (value,index){
+            return value >= 20;
+            })
+            console.log(result);//true   
+    -forEach和some 区别：
+        -在forEach 中return 不会终止迭代，而在some中会终止 
+
+
+字符串方法：
+    -trim() 会从一个字符串的俩端删除空白字符
+        -语法： str.trim()
+        -trim() 方法并不影响原字符串本身，它返回的是一个新的字符串
+
+对象方法：
+    -Object.defineProperty():
+        -定义新属性或修改原有的属性
+        -语法：Object.defineProperty(obj,prop,descriptor);
+            -obj : 目标对象
+            -prop : 需定义或修改的属性的名字
+            -descriptor : 目标属性所拥有的特性(以对象形式书写  {}  )
+                -value : 设置属性的值，默认为undefined
+                -writable : 值是否可以重写。true / false(默认值)
+                -enumerable : 目标属性是否可以被枚举。true / false(默认值)
+                -configurable : 目标属性是否可以被删除或是否可以再次修改特性。true / false(默认值)
