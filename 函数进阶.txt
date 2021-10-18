@@ -1,0 +1,98 @@
+函数的定义方式
+    1.自定义函数(命名函数)
+        -function fn(){}
+    2.函数表达式(匿名函数)
+        -var fun = function(){}
+    3.利用new Function('参数1','参数2','函数体');
+        -var f = new Function('a','b','console.log(a +b)')
+        f(1,2);//3
+    注意：
+        1.所有函数都是Function 的实例对象
+        2.函数也属于对象
+
+函数的调用方式：
+    1.普通函数：
+        -function fn(){
+            console.log('jw')
+        }
+        调用：fn()  fn.call()
+        this指向：window
+    2.对象的方法：
+        -var x = {
+            sayHi : function(){}
+        }
+        调用：x.sayHi();
+        this指向：对象x
+    3.构造函数
+        -function Star(){}
+        调用：var jw = new Star();
+        this指向：jw这个实例对象，圆形对象里面的this指向也是jw这个实例对象
+    4.绑定事件函数
+        -btn.onclick = function(){}
+        调用：点击按钮btn即可调用
+        this指向：函数的调用者btn这个按钮对象
+    5.定时器函数
+        -setInterval(function(){},1000)
+        调用：定时器自己调用1s一次
+        this指向：window
+    6.立即执行函数
+        -(function(){
+            console.log('jw')
+        })();
+        调用：自动调用
+        this指向：window
+
+改变函数内this指向，js提供了三种方法 call(),apply(),bind()
+    -call():
+        -调用这个函数，并且修改函数运行时的this指向
+        -语法: fun.call(thisArg,arg1,arg2,...)
+            -参数：
+                -thisArg:当前调用函数this 的指向对象
+                -arg1,arg2:传递的其他参数
+    -apply():
+        -调用这个函数，并且修改函数运行时的this指向
+        -语法：fun.apply(thisArg,[argsArray])
+            -参数：
+                -thisArg:在fun函数运行时指定的this值
+                -argsArray：传递的值，必须包含在数组里
+                -返回值就是函数的返回值因为他是调用函数
+        -栗子：
+            -var jw = {
+                name : 'once'
+            };
+
+            function fn(arr){
+                console.log(this);
+            };
+
+            fn.apply(jw,['pink']);//{name:'once'} 'pink'
+    -bind():
+        -不会调用函数，但是会改变函数内部this指向
+        -语法：fun.bind(thisArg,arg1,arg2,...)
+            -参数：
+                -thisArg：在fun函数运行时指定的this值
+                -arg1,arg2:传递的其他参数
+                -返回由指定的this值和初始化参数改造的原函数拷贝
+        -栗子1：
+            -var jw = {
+                name : 'once'
+            };
+
+            function fn(){
+                console.log(this);
+            };
+            var f = fn.bind(jw);
+            f();//{name:'once'}
+        -栗子2：如果有的函数我们不需要立即调用，但是又想改变其内部this指向
+                有一个按钮，当我们点击之后，禁用这个按钮，3秒钟之后开启它
+            -<button>点击</button>
+            <script>
+                var btn = document.querySelector('button');
+                btn.onclick = function(){
+                    this.disabled = true;
+                    setTimeout(function(){
+                        this.disabled = false;//定时器中this指向window
+                    }.bind(this),3000)//此时this指向btn
+                }
+            </script>
+    
