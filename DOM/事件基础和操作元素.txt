@@ -1,0 +1,42 @@
+事件概述：
+    -JavaScript 使我们有能力创建动态页面，而事件是可以被侦测到的行为
+事件三要素：
+    1.事件源：事件被触发对象
+    2.事件类型：如何触发
+        -鼠标点击 onclick
+        -获得焦点 onfocus
+        -失去焦点 onblur
+        -鼠标经过 onmouseover
+        -鼠标离开 onmouseout
+        -鼠标移动 onmousemove
+        -鼠标弹起 onmouseup
+        -鼠标按下 onmousedown
+    3.事件处理程序：通过函数赋值方法完成
+
+操作元素：
+    -利用DOM操作元素来改变元素里面的内容属性
+    -改变元素内容：
+        -element.innerText（不识别html标签）
+            -从起始位置到终止位置，去除html标签，去掉空格和换行
+        -element.innerHTML（识别html标签）
+            -从起始位置到终止位置，包括html标签，保留空格和换行
+    -样式属性操作
+        -element.style
+            -行内样式操作
+        -element.className
+            -类名样式操作,会直接修改类名进行覆盖
+        -注意：
+            1.JS 里面的样式采取驼峰命名法
+            2.JS 修改style样式操作，产生的是 行内样式
+    -自定义属性的操作：
+        -获取属性值：
+            1.element.属性;  获取内置属性值（元素本身自带的属性）
+            2.element.getAttribute('属性');   获取自定义属性值
+        -设置元素属性值：
+            1.element.属性 = '值';  设置内置属性值（元素本身自带的属性）
+            2.element.setAttribute('属性','值');  设置自定义属性值
+        -移除元素属性值：
+            -removeAttribute('属性');
+        -获取HTML5自定义属性
+            1.兼容性获取： element.getAttribute('属性')；
+            2.新增属性：element.dataset.属性 || element.dataset['属性']

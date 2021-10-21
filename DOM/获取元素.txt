@@ -1,0 +1,13 @@
+console.dir():打印我们返回的元素对象，更好的查看里面的属性和方法
+
+document.getElementById():通过id获取元素 
+document.getElementByTagName():通过标签名获取元素（以伪数组形式返回）
+element.getElementByTagName('标签名'):获取父元素内部指定标签名的子元素
+    -父元素必须是单个对象（必须指明是哪一个元素对象）获取时不包括父元素自己
+document.getElementByClassName():通过类名获取对象
+document.querySelector():返回指定选择器的第一个元素
+document.querySelectorAll():返回指定选择器的所有元素对象
+获取body元素：
+    -document.body
+获取html元素：
+    -document.documentElement
