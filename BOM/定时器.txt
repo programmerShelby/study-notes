@@ -1,0 +1,18 @@
+window对象提供了俩种定时器：
+    -setTimeout(fn(){},time)
+        -参数：
+            -fn() 回调函数
+            -time 延迟时间
+    -setInterval(fn(){},time)
+        -重复调用一个函数，每隔固定时间，就会去调用一次
+    -注意：
+        -页面中可能有很多定时器一般需要给定时器加标识符
+    
+停止定时器：
+    -window.clearTimeout(timeoutID);
+        -参数：timeoutID 为定时器唯一标识
+
+this 指向：
+    1.在全局作用域或者普通函数中this指向全局对象window(注意定时器里面的this指向window)
+    2.方法调用中谁调用this指向谁
+    3.构造函数中this指向构造函数的实例
