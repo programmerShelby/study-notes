@@ -1,0 +1,44 @@
+element.offsetTop,element.offsetLeft
+    -可以得到元素的偏移位置，返回的是不带单位的数值
+    -它以带有定位的父亲为准 如果没有父亲或者父亲没有定位，则以body为准
+
+element.offsetWidth,element.offsetHeight
+    -可以得到元素的大小 宽度和高度
+    -包含 padding+border+width
+
+element.offsetParent
+    -返回作为该元素带有定位的父级元素如果没有父亲则返回body
+
+offset和style
+    -offset 只读不能改
+
+element.clientWidth,element.clientHeight
+    -返回自身包括padding、内容区的宽度/高度，不含边框，返回数值不带单位
+
+element.clientTop,element.clientLeft
+    -返回元素上边框/左边框的大小
+
+
+element.scrollWidth,element.scrollHeight
+    -返回自身实际的宽度/高度，不含边框，返回数值不带单位
+
+element.scrollTop,element.scrollLeft
+    -返回被卷去的上侧/左侧距离，返回数值不带单位
+
+scoll事件：
+    -当滚动条发生变化时会触发事件
+
+页面的滚动距离通过 window.pageXOffset 获得
+
+三大系列常用法：
+    1.offset  常用于获的元素位置 offsetLeft、offsetTop
+    2.client  常用于获取元素大小 clientHeight、clientWidth
+    3.scroll  常用于获取滚动距离 scrollLeft、scrollTop
+
+mouseenter:
+    -当鼠标移动到元素上时就会触发mouseenter事件（只经过自身盒子触发）
+
+mouseover:
+    -当鼠标移动到元素上时就会触发mouseover事件,经过自身触发，经过子盒子还会触发
+
+

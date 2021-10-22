@@ -1,0 +1,28 @@
+动画实现原理：
+    -核心原理：通过定时器setInterval() 不断移动盒子位置
+        1.获取盒子当前位置
+        2.让盒子在当前位置进行某个方向移动
+        3.利用定时器不断重复这个操作
+        4.加一个结束定时器的条件
+        5.注意此元素需要添加定位，才能使用 element.style.scrollLeft
+    -动画封装函数：
+        -function animate(obj,target){
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function(){
+                if(obj.offsetLeft >=target){
+                    clearInterval(obj.timer);
+                }else{
+                    obj.style.left = obj.offsetLeft + 1 + 'px';
+                }
+            },30);
+        }
+    -缓动效果原理：
+        -缓动动画就是让元素运动速度有所变化，最常见的是让速度慢慢停下来
+            -核心算法：（目标值 - 现在的位置）/10  作为每次移动的距离步长,对其向上取整
+                -var step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            -切记将步长公式放入定时器里
+
+节流阀：
+    -当上一个函数动画内容执行完毕，再去执行下一个函数动画，让事件无法连续触发
+    -核心思路：利用回调函数，添加一个变量来控制，锁住函数和解锁函数
