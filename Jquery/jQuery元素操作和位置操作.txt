@@ -1,0 +1,52 @@
+遍历元素：
+    -jQuery隐式迭代是对同一类元素做了相同的操作，如果想要做不同操作，则需要用到遍历
+    -语法1：$('div').each(function(index,demEle)){xxx;})
+        -each()方法遍历匹配每一个元素
+        -里面的回调函数有俩个参数：
+            -index 每个元素的索引号
+            -demEle 每个DOM元素对象，不是jquery对象
+                要想使用jquery方法，需要给这个dom元素转换为jquery对象
+            -栗子：给三个盒子指定不同颜色
+                -var arr = ['red','green','yellow'];
+                $('div').each(function(index,domEle){
+                    $(domEle).css('color',arr[index])
+                })
+    -语法2：$.each(object,function(index,element){xxx;})
+        -$.each()方法可用于遍历任何对象，主要用于数据处理，比如数组、对象
+        -参数：
+            -index 是每个元素的索引号
+            -element 遍历内容
+创建元素：
+    -$('<li></li>');
+
+添加元素：
+    -内部添加：（父子关系）
+        -element.append('内容')  将其放到内容的最后面
+        -element.prepend('内容')  将其放到内容的最前面
+    -外部添加：（兄弟关系）
+        -element.after('内容')  将内容放到目标元素后面
+        -element.before('内容')  将内容放到目标元素前面
+
+删除元素：
+    -element.remove()  删除匹配的元素(本身)
+    -element.empty()  删除匹配的元素集合中所有的子节点
+    -element.html('')  清空匹配的元素内容
+
+尺寸操作：
+    -width/height()  取得匹配元素的宽度和高度 只算 width/height
+    -innerWidth/innerHeight()  取得匹配元素的宽度和高度 包含padding
+    -outerWidth/outerHeight()  取得匹配元素的宽度和高度 包含padding、border
+    -outerWidth(true)/outerHeight(true)  取得匹配元素的宽度和高度 包含padding、border、margin
+
+位置操作：
+    -offset() 设置获取元素偏移
+        -设置或返回被选元素相对于文档的偏移坐标，跟父级没有关系
+    -position() 获取元素偏移
+        -返回被选元素相对于带有定位的父级偏移坐标，如果父级没有定位，则以文档为准
+    -scrollTop/scrollLeft() 设置或获取元素被卷去的头部和左侧
+    
+在有动画的返回顶部中，元素做动画，将body和html封装为DOM对象，而非document
+    -$('body,html').animate({
+        scrollTop:0
+    })
+    

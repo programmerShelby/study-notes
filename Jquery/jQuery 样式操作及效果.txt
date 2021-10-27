@@ -1,0 +1,78 @@
+操作css方法：
+    -可以使用css方法来修改简单元素样式；也可以操作类，修改多个样式
+        1.参数只写属性名，则返回属性值
+            -$(this).css('color')
+        2.参数是属性名，属性值，逗号分隔，是设置一组样式，属性必须加引号，
+            值如果是数字可以不用跟单位和引号
+            -$(this).css('color','pink')
+        3.以对象形式修改,逗号分隔多组
+            -$(this).css({
+                width:400,
+                height:400，
+                backgroundColor:'red'
+            })
+
+类操作样式：
+    -添加类：
+        -$('div').addClass('类名');
+    -删除类：
+        -$('div').removeClass('类名');
+    -切换类：
+        -$('div').toggleClass('类名');
+
+原生JS中className会覆盖元素原先里面的类名
+jQuery 中类操作只是对指定类进行操作，不影响原先的类名
+
+jQuery效果：
+    -显示效果：
+        -show([speed,[easing],[fn]])
+            -参数：（参数都可以省略，无动画直接显示）
+                1.speed 可选（'slow'/'normal'/'fast'）或者自定义毫秒数值
+                2.easing 用来指定切换效果，默认是'swing'，可选 'linear'
+                3.fn 回调函数，在动画完成时执行，每个元素执行一次
+    -隐藏效果：
+        -hide([speed,[easing],[fn]])//参数与以上相同
+    -切换效果：
+        -toggle([speed,[easing],[fn]])//参数与以上相同
+    -下拉滑动：
+        -slideDown([speed,[easing],[fn]])//参数与以上相同
+    -上拉滑动：
+        -slideUp([speed,[easing],[fn]])//参数与以上相同
+    -切换滑动：
+        -slideToggle([speed,[easing],[fn]])//参数与以上相同
+    -事件切换：
+        -hover([over,]out)
+            -参数：
+                -over 鼠标移到元素上要触发的函数
+                -out 鼠标移出元素时要触发的函数
+                -如果只写一个函数，那么鼠标经过和离开都会触发这个函数
+            -栗子1：
+                -$('.nav>li').hover(function(){//移入},function(){//移出})
+            -栗子2：
+                -$('.nav>li').hover(function(){
+                    $(this).children('ul').slideToggle();
+                });
+    -淡入效果：
+        -fadeIn([speed,[easing],[fn]])//参数与以上相同
+    -淡出效果：
+        -fadeOut([speed,[easing],[fn]])//参数与以上相同
+    -淡入淡出切换效果：
+        -fadeTaggle([speed,[easing],[fn]])//参数与以上相同
+    -调整透明度：
+        -fadeTo([speed],opacity,[easing],[fn]])//1,2,4参数与以上相同
+            -speed  必须写，可选值与上相同
+            -opacity  透明度必须写，取值0-1之间
+    -自定义动画：
+        -animate(params,[speed],[easing],[fn])
+            -参数：
+                -params:想要更改的样式属性，以对象形式传递，必须写。属性名可以不用带引号，
+                        如果是复合属性则需要采用驼峰命名法
+                -其他参数都可省略
+                
+
+动画或效果队列：
+    -动画或效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行
+    -停止动画：
+        -stop() 必须写道动画的前面，停止结束上一次的动画
+            -$(this).children('ul').stop().slideToggle();
+

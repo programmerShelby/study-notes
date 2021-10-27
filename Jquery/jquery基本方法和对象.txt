@@ -43,6 +43,7 @@ jQuery隐式迭代：
 
 筛选方法：
     -$('li').parent() 最近一级亲爸爸
+    -$('li').parents('ul') 可以找到所有的祖先，在后括号中填入即可
     -$('ul').children('li') 最近一级的亲儿子（相当于 $('ul>li')）
     -$('ul').find('li') 后代选择器（相当于$('ul li')）
     -$('ul .item').siblings('li') 除了自身元素之外的所有亲兄弟
@@ -64,6 +65,5 @@ jQuery 排他思想：
 jQuery 链式编程：
     -节约代码量，更优雅。注意执行对象
 
-
-show():显示元素
-hide():隐藏元素
+计算结果保留小数位数：
+    -toFixed('num')  保留num位小数
